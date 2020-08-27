@@ -3,9 +3,24 @@ A* algorithm Simulation
 
 API: DirectX 9
 
-Language: C++11#
+Language: C++11
 
 Explanation: https://snowfleur.tistory.com/162
+
+1- the project is an exception processing with minimum cost to a bug because you can.
+
+1- 해당 프로젝트는 예외 처리를 최소한으로 했기 때문에 버그가 있을 수 있습니다.
+
+2- The final code and changes to the screen because it not, you can.
+
+2- 최종 모습이 아니기 때문에 코드와 화면에 변경이 있을 수 있습니다.
+
+3- if possible or refer something wrong at the sight of this article, such as studying possible mail sent to (SnowFleur0128@gmail.com) if there would be appreciated.
+
+3- 만약 이 글을 보고 잘못된 점이나 참고 가능한 것 등 공부가 가능한 게 있다면 메일(SnowFleur0128@gmail.com) 로 보내주시면 감사하겠습니다.
+
+
+
 
 ![Basic](https://user-images.githubusercontent.com/32999507/91439590-3041f480-e8a8-11ea-9ee2-cedbcec75d9b.PNG)
 
