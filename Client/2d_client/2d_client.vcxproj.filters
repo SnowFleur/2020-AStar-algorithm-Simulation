@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="world">
+      <UniqueIdentifier>{85d1cf74-a5be-4d37-bc46-b2353c6ba13f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{8a40b91c-1295-4b4b-9a34-5101e7a0fe0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{14875be7-eaf9-4073-af66-4ac11b2860ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\resource">
+      <UniqueIdentifier>{c800b817-6821-4910-8562-b342ad6a5b05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Texture">
+      <UniqueIdentifier>{2b160f46-bf56-4e08-bc09-c71f5595e67c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tool">
+      <UniqueIdentifier>{76bdadd7-691d-4a90-b7a8-77d103364c49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gpdumb1.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>world</Filter>
+    </ClInclude>
+    <ClInclude Include="directX.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool.h">
+      <Filter>Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="2DClient.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>world</Filter>
+    </ClCompile>
+    <ClCompile Include="gpdumb1.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool.cpp">
+      <Filter>Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\Mouse.png">
+      <Filter>Graphics\resource</Filter>
+    </Image>
+    <Image Include="resource\Pipe.png">
+      <Filter>Graphics\resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
