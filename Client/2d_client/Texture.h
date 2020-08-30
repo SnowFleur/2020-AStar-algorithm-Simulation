@@ -13,9 +13,9 @@ public:
 
     CTexture() = delete;
     CTexture(const CTexture&) = delete;
-    CTexture(const CTexture&&) = delete;
+    CTexture(CTexture&&) = delete;
     CTexture& operator=(const CTexture&) = delete;
-    CTexture& operator=(const CTexture&&) = delete;
+    CTexture& operator=(CTexture&&) = delete;
 
     size_t    GetTextureSize()const;
     void      GetTexturePosition(int& x,int& y);
@@ -23,4 +23,5 @@ public:
     void      Draw(const int x, const int y, size_t DrawTextureIndex=0);
     void      Draw(size_t DrawTextureIndex = 0);
     bool      CollisionByMouse(const int mouse_x, const int mouse_y);
+    bool      GetIsMove()const;
 };

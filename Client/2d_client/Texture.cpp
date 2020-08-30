@@ -51,7 +51,6 @@ void CTexture::SetTexturePosition(const int x, const int y) {
 }
 
 #pragma endregion
-
 #pragma region Draw Function Overloading
 void CTexture::Draw(const int x, const int y, size_t DrawTextureIndex) {
     if (textureSize_ == 1) {
@@ -90,4 +89,8 @@ bool CTexture::CollisionByMouse(const int mouse_x, const int mouse_y) {
         }
     }
     return false;
+}
+
+bool CTexture::GetIsMove()const {
+    return isMove_;
 }

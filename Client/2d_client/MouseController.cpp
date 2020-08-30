@@ -1,24 +1,35 @@
 #include"MouseController.h"
 
-int CMouseController::mouse_x{ 0 };
-int CMouseController::mouse_y{ 0 };
-CURRENT_TOOL CMouseController::current_tool_ = CURRENT_TOOL::CURRENT_TOOL_NULL;
+CMouseController* CMouseController::handle_ = nullptr;
+
+CMouseController::CMouseController() 
+    :mouse_x{ 0 }, mouse_y{0 }, mouseState_{ MOUSE_STATE::CLICK_UP } {
+}
 
 
-void CMouseController::SetControllerByMouse(const int InputMouseX, const int InputMouseY) {
+CMouseController* CMouseController::GetHandle() {
+
+    if (handle_ == nullptr) {
+        handle_ = new CMouseController();
+
+    }
+    return handle_;
+}
+
+void CMouseController::SetMousePosition(const int InputMouseX, const int InputMouseY) {
     mouse_x = InputMouseX;
     mouse_y = InputMouseY;
 }
 
-void CMouseController::GetControllerByMouse(int& refMouseX, int& refMouseY) {
+void CMouseController::GetMousePosition(int& refMouseX, int& refMouseY) {
     refMouseX = mouse_x;
     refMouseY = mouse_y;
 }
 
-void CMouseController::SetCurrentTool(CURRENT_TOOL tool) {
-    current_tool_ = tool;
+void CMouseController::SetMouseState(MOUSE_STATE state) {
+    mouseState_ = state;
 }
 
-CURRENT_TOOL CMouseController::GetCurrentTool() {
-    return current_tool_;
+MOUSE_STATE CMouseController::GetMouseState() {
+    return mouseState_;
 }

@@ -27,6 +27,21 @@
     <Filter Include="Tool">
       <UniqueIdentifier>{76bdadd7-691d-4a90-b7a8-77d103364c49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PathFinding">
+      <UniqueIdentifier>{b4960f20-88cb-4389-ab90-ea5f67758add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PathFinding\A%2a">
+      <UniqueIdentifier>{d3c2c837-f2cc-46f4-9d94-2f289997d690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PathFinding\Dijkstra">
+      <UniqueIdentifier>{d9144b92-ab17-421b-a4e7-3ce9d91c0e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{10037f64-7139-4b57-8809-633678f2e3ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PathFinding\Navigation">
+      <UniqueIdentifier>{7a0b60ba-aaa4-477c-9ef7-933696e75739}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gpdumb1.h">
@@ -47,6 +62,15 @@
     <ClInclude Include="MouseController.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="Astar.h">
+      <Filter>PathFinding\A%2a</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Navigation.h">
+      <Filter>PathFinding\Navigation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2DClient.cpp">
@@ -66,6 +90,12 @@
     </ClCompile>
     <ClCompile Include="MouseController.cpp">
       <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>PathFinding\A%2a</Filter>
+    </ClCompile>
+    <ClCompile Include="Navigation.cpp">
+      <Filter>PathFinding\Navigation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

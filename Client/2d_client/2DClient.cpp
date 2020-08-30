@@ -38,35 +38,19 @@ LRESULT CALLBACK WindowProc(HWND hwnd,
     HDC			hdc;	   // handle to a device context
 
                            // what is the message 
-    switch (msg)
-    {
+    switch (msg){
     case WM_LBUTTONDOWN: {
-    
-        CMouseController::SetControllerByMouse(LOWORD(lparam), HIWORD(lparam));
+        CMouseController::GetHandle()->SetMousePosition(LOWORD(lparam), HIWORD(lparam));
+        CMouseController::GetHandle()->SetMouseState(MOUSE_STATE::CLICK_DOWN);
 #ifdef _DEBUG
         //std::cout << "Click Mouse Left  "<< LOWORD(lparam) <<" "<< HIWORD(lparam) <<"\n";
         int x = LOWORD(lparam);
         int y = HIWORD(lparam);
-
-        D3DXVECTOR3 pos = D3DXVECTOR3(8,8, 0.0);
-
-
-
-
+        D3DXVECTOR3 pos = D3DXVECTOR3(8, 8, 0.0);
 #endif
         break;
     }
-    case WM_KEYDOWN: {
 
-        switch (wparam) {
-        case VK_SPACE: {
-            break;
-        }
-        default:
-            break;
-        }
-        break;
-    }
     case WM_CREATE:
     {
         // do initialization stuff here
