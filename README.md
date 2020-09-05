@@ -25,3 +25,16 @@ More Explanation: https://snowfleur.tistory.com/162
 The screen of the project is as follows. On the left side of the screen is a (15,10) size Tile, and on the right is a mouse, wall, cheese, and reset tool. You can place it on the left side of the Tile using this tool.
 
 프로젝트의 화면은 다음과 같다. 화면 왼쪽에는 (15,10) 크기의 Tile이 있으며 오른쪽에는 쥐, 벽, 치즈와 Reset의 Tool 이 존재한다. 이 Tool을 이용해서 왼쪽의 Tile에 배치가 가능하다.
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/32999507/92305590-aab6f680-efc3-11ea-8a7e-2b215ae21a43.gif)
+
+
+![main](https://user-images.githubusercontent.com/32999507/92305572-80fdcf80-efc3-11ea-8e14-8fedea19f49a.gif)
+
+![N마우스 M치즈](https://user-images.githubusercontent.com/32999507/92305581-8d822800-efc3-11ea-8c73-0a6745f9e91d.gif)
+
+
+
+It is possible to find a way in various environments.
+
+다양한 환경에서의 길 찾기가 가능하다.
