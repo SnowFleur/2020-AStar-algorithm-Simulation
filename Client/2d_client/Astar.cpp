@@ -11,6 +11,7 @@
 
 namespace Astar {
     using PairData = std::pair<int, CNodeSharePtr>;   //weight, Node
+    using PairPosition = std::pair<int, Position>;
     using OpenList = std::priority_queue<PairData, std::vector<PairData>, Compare>;
     using CloseList = std::vector<Position>;
 }
@@ -30,8 +31,10 @@ public:
     Astar::OpenList     openList_;
     Astar::CloseList    closeList_;
 #ifdef _DEBUG
-    std::vector<std::pair<int, Position>> PrintPath_;
+#else
+    Astar::ShortPath    drawPath_;
 #endif // _DEBUG
+
 };
 
 CAstar::CAstar() :pimpl_(std::make_shared< CAStarPimpl>()) {
@@ -70,7 +73,7 @@ int CAstar::GetHeuristic(Position lhs, Position rhs) {
     }
     case 3: {
         // Over Weight
-        return sqrt(pow(lhs.first - rhs.first, 2) + pow(lhs.second - rhs.second, 2))*50;
+        return sqrt(pow(lhs.first - rhs.first, 2) + pow(lhs.second - rhs.second, 2)) * 50;
         break;
     }
     case 4: {
@@ -116,23 +119,18 @@ void CAstar::ResetData()const {
     pimpl_->closeList_.clear();
     pimpl_->openList_ = Astar::OpenList();
 #ifdef _DEBUG
-    pimpl_->PrintPath_.clear();
+#else
+    pimpl_->drawPath_.clear();
 #endif // _DEBUG
 }
 
-Astar::ShortPath CAstar::StartFindPath(Position mouse, CNavigation navigation) {
+Astar::ShortPath CAstar::StartFindPath(Position mouse, Position cheese, CNavigation navigation) {
 
-    Cheeses cheeses = navigation.GetCheeses();
     ResetData();
-    if (cheeses.begin() == cheeses.end()) {
-        return pimpl_->shortPath_;
-    }
-
-    //일단 한개의 치즈의 위치를 받아온다.
-    auto  cheese = *cheeses.begin();
 
     //시작 지점을 Open List에 넣는다.
     pimpl_->openList_.emplace(0, new CNode{ mouse,nullptr });
+    navigation.SetCellType(cheese.first, cheese.second, CELL_TYPE::CT_CHEESE);
 
     while (pimpl_->openList_.empty() == false) {
         //First: Weight Second: Position
@@ -144,23 +142,10 @@ Astar::ShortPath CAstar::StartFindPath(Position mouse, CNavigation navigation) {
         //Add topVaule Position in Clost List
         pimpl_->closeList_.emplace_back(topPosition);
 
-#ifdef _DEBUG
-        pimpl_->PrintPath_.emplace_back(topWeight, topPosition);
-#endif // _DEBUG
-
         int tx = topPosition.first;
         int ty = topPosition.second;
 
-        /*
-        문제점이 뭐냐면
-        CheckVaildByNode() CT_GRUOND인거만 넣으니까 지금 찾지를 못함
-        뒤에서 치즈 여부를 찾던지, 이동가능여부(bool) 값으로 바꿔서 다시 할건지
-        고민 해야봐야함
-
-
-
-        */
-
+        //if (cheese.first == tx && cheese.second == ty) {
         if (navigation.GetCellType(tx, ty) == CELL_TYPE::CT_CHEESE) {
             while (topNode != nullptr) {
                 pimpl_->shortPath_.emplace_back(topNode->position_);
@@ -170,10 +155,10 @@ Astar::ShortPath CAstar::StartFindPath(Position mouse, CNavigation navigation) {
             std::cout << "Open  List Size" << pimpl_->openList_.size() << std::endl;
             std::cout << "Close List Size" << pimpl_->closeList_.size() << std::endl;
 #endif // _DEBUG
-
             pimpl_->shortPath_.pop_back();
             return pimpl_->shortPath_;
         }
+
         //Left->Right->Up->Down
         for (int i = 0; i < 4; ++i) {
             int x = tx + pimpl_->direction_[i].first;
@@ -196,32 +181,30 @@ Astar::ShortPath CAstar::StartFindPath(Position mouse, CNavigation navigation) {
             }
         }
     } //End  While Close List
+#ifdef _DEBUG
+    std::cout << "Not Find Cheese\n";
+#endif // _DEBUG
     return pimpl_->shortPath_;
+}
+
+void CAstar::SetDrawPath(Astar::ShortPath& drawPath) {
+#ifdef _DEBUG
+#else
+    pimpl_->drawPath_ = drawPath;
+#endif // _DEBUG
 }
 
 void CAstar::Draw() {
 #ifdef _DEBUG
-    for (const auto& path : pimpl_->PrintPath_) {
-
-        D3DXVECTOR3 pos = D3DXVECTOR3((path.second.first - g_left_x) * 65.0f + 8,
-            (path.second.second - g_top_y) * 65.0f + 8, 0.0);
-
-        wchar_t text[10]{};
-        //wsprintf(text, L"%d", (int)++count);
-        wsprintf(text, L"%d", (int)path.first);
-        //wsprintf(text, L"%d", (int)path.first);
-        Draw_Text_D3D(text, static_cast<int>(pos.x), static_cast<int>(pos.y), D3DCOLOR_ARGB(255, 255, 0, 0));
-    }
-#else
+#else //Release
     int count{};
-    for (auto iter = pimpl_->shortPath_.rbegin(); iter != pimpl_->shortPath_.rend(); ++iter) {
+    for (auto iter = pimpl_->drawPath_.rbegin(); iter != pimpl_->drawPath_.rend(); ++iter) {
 
         D3DXVECTOR3 pos = D3DXVECTOR3((iter->first - g_left_x) * 65.0f + 8,
             (iter->second - g_top_y) * 65.0f + 8, 0.0);
 
         wchar_t text[10]{};
         wsprintf(text, L"%d", (int)++count);
-        //wsprintf(text, L"%d", (int)path.first);
         Draw_Text_D3D(text, static_cast<int>(pos.x + 20), static_cast<int>(pos.y + 20), D3DCOLOR_ARGB(255, 255, 0, 0));
     }
 #endif // _DEBUG

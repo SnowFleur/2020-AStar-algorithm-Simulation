@@ -1,6 +1,6 @@
 ﻿#pragma once
 /*
-SPDX-FileCopyrightText:     © 2020 DongHyuk Park< SnowFleur0128@gamil.com>
+SPDX-FileCopyrightText:     © 2020 DongHyuk Park< SnowFleur0128@gmail.com>
 SPDX-License-Identifier:    BSD-3-Clause
 More Information visit:     https://snowfleur.tistory.com/159?category=747154
 */
@@ -26,7 +26,8 @@ public:
     CMouse& operator=(CMouse&&) = delete;
 
     void        Update(CWorld& world)override;
-    void        StartFindPath(CNavigation& navigation,bool everyFrame)override;
+    void        StartFindPath(CNavigation& navigation)override;
+    void        SetEveryFrame(const bool everyFrame)override;
     void        Draw()override;
     void        SetPosition(Position && position);
     Position    GetPosition()const;

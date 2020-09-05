@@ -8,8 +8,8 @@
 #include"Texture.h" //텍스처 class
 #include"Tool.h" //툴 class
 #include"MouseController.h" //마우스 Static Class
-#include"Mouse.h" //Mouse Class
-#include"Astar.h"
+#include"Mouse.h" //쥐 Class
+#include"Astar.h" //Astar class
 
 using SharedPtrTool         = std::shared_ptr<CTool>;           //using shared ptr CTool
 using SharedPtrAStar        = std::shared_ptr<CAstar>;          //using Shared Ptr CAstar
@@ -43,16 +43,8 @@ void CWorld::Update(DWORD time) {
 
     //GameObjects Update
     if (time % g_mouseSpeed == 0) {
-        if (pimpl_->gameobjects_.size() == 1) {
-            for (auto& gameobject : pimpl_->gameobjects_) {
-                gameobject.Update(*this);
-            }
-        }
-        else {
-            for (auto& gameobject : pimpl_->gameobjects_) {
-                gameobject.StartFindPath(*(pimpl_->navigation_.get()), true);
-                gameobject.Update(*this);
-            }
+        for (auto& gameobject : pimpl_->gameobjects_) {
+            gameobject.Update(*this);
         }
     }
     Draw();
@@ -94,20 +86,16 @@ void CWorld::InsertGameObejctByMouse() {
         x = (x - 8) / 65;
         y = (y - 8) / 65;
 
-        //나중에 수정필요 너무 불안정함
+        //Check
         if (x >= MAX_WORLD_X || y >= MAX_WORLD_Y)break;
-
-        //누르고 나면 마우스가 그 위치에 있기 때문에 계속눌린다.
         CMouseController::GetHandle()->SetMousePosition(100000, 1000000);
-       
-        // 1. 마우스 좌표를 화면밖으로 옮긴다.
-        // 2. 어떻게든 누를때만 호출하게 한다.
-
-        //Set Mouse Position By Navigation
-        pimpl_->navigation_->SetCellType(x, y, CELL_TYPE::CT_MOUSE);
 
         //Set Mouse
         pimpl_->gameobjects_.emplace_back(CMouse{ x,y });
+
+        //Set Move availability
+        pimpl_->navigation_->SetCellType(x, y, CELL_TYPE::CT_MOUSE);
+
         break;
     }
     case TOOL_INDEX::TOOL_INDEX_WALL: {
@@ -117,8 +105,9 @@ void CWorld::InsertGameObejctByMouse() {
         x = (x - 8) / 65;
         y = (y - 8) / 65;
 
-        //나중에 수정필요 너무 불안정함
+        //Check
         if (x >= MAX_WORLD_X || y >= MAX_WORLD_Y)break;
+        CMouseController::GetHandle()->SetMousePosition(100000, 1000000);
 
         //Shared Ptr을 이용해서 텍스쳐는 공유
         pimpl_->cells_[x][y] = pimpl_->tool_->GetTexture(TOOL_INDEX_WALL);
@@ -135,9 +124,8 @@ void CWorld::InsertGameObejctByMouse() {
         x = (x - 8) / 65;
         y = (y - 8) / 65;
 
-        //나중에 수정필요 너무 불안정함
+        //Check
         if (x >= MAX_WORLD_X || y >= MAX_WORLD_Y)break;
-
         CMouseController::GetHandle()->SetMousePosition(100000, 1000000);
 
 
@@ -146,9 +134,6 @@ void CWorld::InsertGameObejctByMouse() {
 
         //Set Cheese Position By navigation
         pimpl_->navigation_->SetCheese(Position{ x,y });
-        pimpl_->navigation_->SetCellType(x, y, CELL_TYPE::CT_CHEESE);
-
-
         break;
     }
     case TOOL_INDEX::TOOL_INDEX_RESET: {
@@ -164,10 +149,21 @@ void CWorld::InsertGameObejctByMouse() {
     case TOOL_INDEX::TOOL_INDEX_START: {
         // 1. dynamic_cast 
         // 2. Add StartFindPath
-        for (auto& gameobject : pimpl_->gameobjects_) {
-            gameobject.StartFindPath(*(pimpl_->navigation_.get()),false);
+        if (pimpl_->gameobjects_.size() == 1) {
+            for (auto& gameobject : pimpl_->gameobjects_) {
+                gameobject.StartFindPath(*(pimpl_->navigation_.get()));
+            }
         }
+        else {
+            for (auto& gameobject : pimpl_->gameobjects_) {
+                //Every Frame Excute PathFinding
+                gameobject.SetEveryFrame(true);
+                gameobject.StartFindPath(*(pimpl_->navigation_.get()));
+            }
+        }
+
         pimpl_->tool_->SetSelectedToolByMouse(TOOL_INDEX::TOOL_INDEX_NULL);
+
         break;
     }
     default:

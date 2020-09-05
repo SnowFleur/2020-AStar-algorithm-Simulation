@@ -30,9 +30,6 @@
     <Filter Include="PathFinding\A%2a">
       <UniqueIdentifier>{d3c2c837-f2cc-46f4-9d94-2f289997d690}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PathFinding\Dijkstra">
-      <UniqueIdentifier>{d9144b92-ab17-421b-a4e7-3ce9d91c0e87}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{10037f64-7139-4b57-8809-633678f2e3ac}</UniqueIdentifier>
     </Filter>
