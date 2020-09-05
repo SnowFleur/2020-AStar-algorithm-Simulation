@@ -12,9 +12,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Controller">
-      <UniqueIdentifier>{8a40b91c-1295-4b4b-9a34-5101e7a0fe0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{14875be7-eaf9-4073-af66-4ac11b2860ca}</UniqueIdentifier>
     </Filter>
@@ -42,11 +39,20 @@
     <Filter Include="PathFinding\Navigation">
       <UniqueIdentifier>{7a0b60ba-aaa4-477c-9ef7-933696e75739}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PathFinding\Node">
+      <UniqueIdentifier>{4fa12da3-efd5-45e4-886e-b941a211ebc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{19353cdd-08c7-4139-95fc-22d74566d35b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Mouse">
+      <UniqueIdentifier>{eb234954-bd30-4b34-a0d4-ad8d4cac0c26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MouseController">
+      <UniqueIdentifier>{8a40b91c-1295-4b4b-9a34-5101e7a0fe0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gpdumb1.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
     <ClInclude Include="World.h">
       <Filter>world</Filter>
     </ClInclude>
@@ -60,7 +66,7 @@
       <Filter>Tool</Filter>
     </ClInclude>
     <ClInclude Include="MouseController.h">
-      <Filter>Controller</Filter>
+      <Filter>MouseController</Filter>
     </ClInclude>
     <ClInclude Include="Astar.h">
       <Filter>PathFinding\A%2a</Filter>
@@ -70,6 +76,18 @@
     </ClInclude>
     <ClInclude Include="Navigation.h">
       <Filter>PathFinding\Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>PathFinding\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="gpdumb1.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>GameObject\Mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,13 +107,16 @@
       <Filter>Tool</Filter>
     </ClCompile>
     <ClCompile Include="MouseController.cpp">
-      <Filter>Controller</Filter>
+      <Filter>MouseController</Filter>
     </ClCompile>
     <ClCompile Include="Astar.cpp">
       <Filter>PathFinding\A%2a</Filter>
     </ClCompile>
     <ClCompile Include="Navigation.cpp">
       <Filter>PathFinding\Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>GameObject\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

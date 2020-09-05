@@ -1,5 +1,9 @@
-#pragma once
-
+﻿#pragma once
+/*
+SPDX-FileCopyrightText:     © 2020 DongHyuk Park< SnowFleur0128@gamil.com>
+SPDX-License-Identifier:    BSD-3-Clause
+More Information visit:     https://snowfleur.tistory.com/159?category=747154
+*/
 enum class MOUSE_STATE {
     CLICK_UP = 0,
     CLICK_DOWN,

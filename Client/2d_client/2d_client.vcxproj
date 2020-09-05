@@ -20,11 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Astar.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="MouseController.h" />
     <ClInclude Include="directX.h" />
     <ClInclude Include="gpdumb1.h" />
     <ClInclude Include="Navigation.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="World.h" />
@@ -32,6 +35,7 @@
   <ItemGroup>
     <ClCompile Include="2DClient.cpp" />
     <ClCompile Include="Astar.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MouseController.cpp" />
     <ClCompile Include="Navigation.cpp" />
     <ClCompile Include="Tool.cpp" />

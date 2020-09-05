@@ -19,6 +19,9 @@ public:
     UniquePtrTexture    selectTexture_;     //Select Texture
     Tools               tools_;             //Tool   Textures
     TOOL_INDEX          selectToolByMouse_; // Used Mouse Selected Tool
+
+    //юс╫ц
+    UniquePtrTexture    mouseTexture_;     //Select Texture
 };
 
 CTool::CTool() :pimpl_(std::make_shared< CToolPimpl>()) {
@@ -42,6 +45,9 @@ CTool::CTool() :pimpl_(std::make_shared< CToolPimpl>()) {
     pimpl_->selectTexture_ = std::make_unique<CTexture>
         (L"resource/Select.PNG", RESOURCE_WIDTH, RESOURCE_HEIGHT, 1,false);
     pimpl_->selectToolByMouse_ = TOOL_INDEX_NULL;
+
+    pimpl_->mouseTexture_ = std::make_unique<CTexture>
+        (L"resource/Mouse.PNG", RESOURCE_WIDTH, RESOURCE_HEIGHT, 4, false);
 }
 
 void CTool::Update() {
@@ -131,6 +137,7 @@ SharedPtrTexture CTool::GetTexture(TOOL_INDEX index)const {
         break;
     }
 }
+
 TOOL_INDEX CTool::GetSelectedToolByMouse()const {
     return pimpl_->selectToolByMouse_;
 }

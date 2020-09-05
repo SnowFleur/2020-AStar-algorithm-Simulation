@@ -1,38 +1,41 @@
-#pragma once
+﻿#pragma once
+/*
+SPDX-FileCopyrightText:     © 2020 DongHyuk Park< SnowFleur0128@gamil.com>
+SPDX-License-Identifier:    BSD-3-Clause
+More Information visit:     https://snowfleur.tistory.com/159?category=747154
+*/
 #include"Global.h"
 
-class  CAStarPimpl;
-struct Compare;
+class   CAStarPimpl;
+class   CNavigation;
+struct  Compare;
 
 constexpr int ADD_WEIGHT = 1;
 
-//enum class DIRECTION {
-//    UP      = 1,
-//    DOWN    = 2,
-//    LEFT    = 3,
-//    RIGHT   = 4,
-//};
+namespace Astar {
+    using ShortPath         = std::vector<Position>;
+    using ShortPathIter     = ShortPath::reverse_iterator;
+}
 
 using SharedPtrAStartPimpl = std::shared_ptr<CAStarPimpl>; //using shared ptr CAstartPimpl
 
-class CAstar{
+class CAstar {
 private:
     SharedPtrAStartPimpl   pimpl_;
     int                    GetHeuristic(Position lhs, Position rhs);
-    bool                   CheckVaildByNode(Position&& currentPosition);
+    bool                   CheckVaildByNode(Position&& currentPosition, CNavigation& navigation);
     bool                   CheckByCloseList(Position&& currentPosition);
-    
+
 public:
     CAstar();
     ~CAstar() = default;
     CAstar(const CAstar&) = delete;
     CAstar(CAstar&&) = delete;
     CAstar& operator=(const CAstar&) = delete;
-    CAstar& operator=( CAstar&&) = delete;
-
-    void    SetIsMoveByNavigation(const int x, const int y, const bool isMove);
-    void    ResetByNavigation()const;
-    void    StartFindPath(VectorInObject& mouses, VectorInObject& cheeses, SharedPtrTextures& cells);
-    void    Draw();
+    CAstar& operator=(CAstar&&) = delete;
+    
+    void                ResetData()const;
+    Astar::ShortPath    StartFindPath(Position mouse,CNavigation navigation);
+    void                Draw();
 };
 

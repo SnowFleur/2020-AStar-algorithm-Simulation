@@ -1,4 +1,9 @@
-#pragma once
+﻿#pragma once
+/*
+SPDX-FileCopyrightText:     © 2020 DongHyuk Park< SnowFleur0128@gamil.com>
+SPDX-License-Identifier:    BSD-3-Clause
+More Information visit:     https://snowfleur.tistory.com/159?category=747154
+*/
 #include"directX.h"
 
 class CTexture {
@@ -24,4 +29,6 @@ public:
     void      Draw(size_t DrawTextureIndex = 0);
     bool      CollisionByMouse(const int mouse_x, const int mouse_y);
     bool      GetIsMove()const;
+    BOB*      GetTexture()const;
+    void      SetTexture(const BOB* texture);
 };

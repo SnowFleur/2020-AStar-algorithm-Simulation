@@ -94,3 +94,11 @@ bool CTexture::CollisionByMouse(const int mouse_x, const int mouse_y) {
 bool CTexture::GetIsMove()const {
     return isMove_;
 }
+
+BOB* CTexture::GetTexture()const {
+    return texture_;
+}
+
+void CTexture::SetTexture(const BOB* texture) {
+    texture_ = const_cast<BOB*>(texture);
+}

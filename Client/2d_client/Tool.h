@@ -1,7 +1,11 @@
-#pragma once
+﻿#pragma once
+/*
+SPDX-FileCopyrightText:     © 2020 DongHyuk Park< SnowFleur0128@gamil.com>
+SPDX-License-Identifier:    BSD-3-Clause
+More Information visit:     https://snowfleur.tistory.com/159?category=747154
+*/
 #include<memory>
-
-
+#include"directX.h"
 constexpr int TOOLS_X_POSITION = 15;
 constexpr int TOOLS_Y_POSITION = 5;
 
@@ -36,6 +40,5 @@ public:
     SharedPtrTexture GetTexture(TOOL_INDEX index)const;
     TOOL_INDEX GetSelectedToolByMouse()const;
     void SetSelectedToolByMouse(TOOL_INDEX index);
-
 };
 
