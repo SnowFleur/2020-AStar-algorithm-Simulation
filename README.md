@@ -26,8 +26,14 @@ The screen of the project is as follows. On the left side of the screen is a (15
 
 프로젝트의 화면은 다음과 같다. 화면 왼쪽에는 (15,10) 크기의 Tile이 있으며 오른쪽에는 쥐, 벽, 치즈와 Reset의 Tool 이 존재한다. 이 Tool을 이용해서 왼쪽의 Tile에 배치가 가능하다.
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/32999507/92305590-aab6f680-efc3-11ea-8a7e-2b215ae21a43.gif)
+![캡처](https://user-images.githubusercontent.com/32999507/92315547-1f208280-f022-11ea-8bd1-a9c3d5586f8b.PNG)
 
+The setting values in the Global.h header file also allow you to change the speed of movement of rats and the value of the heuristic.
+
+또한 Global.h 헤더파일에 있는 세팅값을 통해 쥐의 이동속도와 휴리스틱 값을 변경할 수 있다.
+
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/32999507/92305590-aab6f680-efc3-11ea-8a7e-2b215ae21a43.gif)
 
 ![main](https://user-images.githubusercontent.com/32999507/92305572-80fdcf80-efc3-11ea-8e14-8fedea19f49a.gif)
 
